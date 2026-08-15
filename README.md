@@ -70,13 +70,21 @@ npm run preview
 
 ## Deployment (GitHub Pages)
 
-`.github/workflows/deploy.yml` deploys on push to `main` (or manual dispatch):
+`.github/workflows/deploy.yml` deploys on push to `main` (or manual dispatch). It runs
+three jobs in order — **test → build → deploy**:
 
-1. `npm ci`
-2. `npm test`
-3. `npm run docs:build` + `npm run link-check` (no `BASE`, for link resolution)
-4. `npm run docs:build` with `BASE=/{repo}/` for the Pages artifact
-5. `actions/configure-pages` + `actions/upload-pages-artifact` + `actions/deploy-pages`
+### 1. `test`
+- `npm ci`
+- `npm test`
+
+### 2. `build` (needs `test`)
+- `npm ci`
+- `npm run docs:build` + `npm run link-check` (no `BASE`, for link resolution)
+- `npm run docs:build` with `BASE=/{repo}/` for the Pages artifact
+- `actions/configure-pages` + `actions/upload-pages-artifact`
+
+### 3. `deploy` (needs `build`)
+- `actions/deploy-pages` publishes the artifact to GitHub Pages
 
 Enable Pages in repo Settings → Pages → **Source: GitHub Actions**. The `BASE`
 environment variable is what keeps VitePress asset paths correct for a project page.
