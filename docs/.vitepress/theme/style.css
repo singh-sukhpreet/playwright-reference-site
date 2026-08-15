@@ -1,0 +1,34 @@
+.vp-doc .line.okfail.bad {
+  background-color: var(--vp-c-red-soft);
+  border-left: 3px solid var(--vp-c-red-2);
+}
+
+.vp-doc .line.okfail.good {
+  background-color: var(--vp-c-green-soft);
+  border-left: 3px solid var(--vp-c-green-2);
+}
+
+.vp-doc code.okfail {
+  padding: 0.15em 0.4em;
+  white-space: nowrap;
+}
+
+.vp-doc code.okfail.bad {
+  border-left: 3px solid var(--vp-c-red-2);
+  background-color: var(--vp-c-red-soft);
+}
+
+.vp-doc code.okfail.good {
+  border-left: 3px solid var(--vp-c-green-2);
+  background-color: var(--vp-c-green-soft);
+}
+
+.vp-doc a {
+  font-weight: 500;
+}
+
+.VPNavBarTitle .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

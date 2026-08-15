@@ -1,0 +1,10 @@
+node_modules
+dist
+docs/.vitepress/dist
+docs/.vitepress/cache
+docs/.vitepress/generated
+artifacts
+.DS_Store
+server.log
+*.log
+task.txt
