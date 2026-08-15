@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BASE: /${{ github.event.repository.name }}/
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,6 +27,9 @@ jobs:
       - run: npm test
       - run: npm run docs:build
       - run: npm run link-check
+      - run: npm run docs:build
+        env:
+          BASE: /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
